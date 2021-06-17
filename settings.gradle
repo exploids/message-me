@@ -1,0 +1,3 @@
+// set root project name
+rootProject.name = 'webeng'
+include 'chat'
