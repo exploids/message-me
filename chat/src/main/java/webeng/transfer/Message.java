@@ -1,8 +1,9 @@
 package webeng.transfer;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Message {
+public class Message implements Serializable {
 
     String sender;
     String receiver;
