@@ -3,14 +3,33 @@ package webeng.data.source;
 import webeng.data.UserDao;
 import webeng.transfer.User;
 
+import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
 public class JdbcUserDao extends JdbcBase implements UserDao {
     @Override
     public User get(String name) {
-        return null;
+        User user = null;
+        try (PreparedStatement statement = getConnection().prepareStatement("select * from User where name = ?")) {
+            statement.setString(1, name);
+
+            try (ResultSet results = statement.executeQuery()) {
+                if (results.next()) {
+                    user = new User();
+                    user.setName(results.getString(1));
+                    user.setPassword(results.getString(2));
+                    user.setDescription(results.getString(3));
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return user;
     }
 
     @Override
