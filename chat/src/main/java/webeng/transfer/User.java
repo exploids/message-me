@@ -6,6 +6,7 @@ public class User implements Serializable {
 
     String name;
     String password;
+    String description;
 
     public String getName() {
         return name;
@@ -21,5 +22,13 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
