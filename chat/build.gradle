@@ -10,10 +10,8 @@ dependencies {
 	
 	// https://mvnrepository.com/artifact/org.jboss.weld.servlet/weld-servlet-core
 	compile group: 'org.jboss.weld.servlet', name: 'weld-servlet-core', version: '3.1.4.Final'
-	
-	
 
-	
+	implementation "com.h2database:h2:1.4.200"
 }
 
 gretty {
