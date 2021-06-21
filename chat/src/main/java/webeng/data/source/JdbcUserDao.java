@@ -4,9 +4,11 @@ import webeng.data.UserDao;
 import webeng.transfer.User;
 
 import javax.xml.transform.Result;
+import java.sql.Array;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JdbcUserDao extends JdbcBase implements UserDao {
@@ -24,7 +26,6 @@ public class JdbcUserDao extends JdbcBase implements UserDao {
                     user.setDescription(results.getString(3));
                 }
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -34,7 +35,23 @@ public class JdbcUserDao extends JdbcBase implements UserDao {
 
     @Override
     public List<User> getAll() {
-        return null;
+        List<User> userliste = new ArrayList<>();
+        try (PreparedStatement statement = getConnection().prepareStatement("select * from User")) {
+
+            try (ResultSet results = statement.executeQuery()) {
+                while (results.next()) {
+                    User user = new User();
+                    user.setName(results.getString(1));
+                    user.setPassword(results.getString(2));
+                    user.setDescription(results.getString(3));
+                    userliste.add(user);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return userliste;
     }
 
     @Override
