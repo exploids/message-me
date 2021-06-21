@@ -15,8 +15,7 @@ public class JdbcBase {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-        try {
-            Statement statement = connection.createStatement();
+        try (Statement statement = connection.createStatement()) {
             statement.execute("create table if not exists User (" +
                     "name varchar(32) not null," +
                     "password varchar(128) not null," +
