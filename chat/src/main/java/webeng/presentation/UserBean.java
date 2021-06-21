@@ -1,15 +1,29 @@
 package webeng.presentation;
 
+import webeng.logic.UserManager;
 import webeng.transfer.User;
 
-import javax.faces.bean.RequestScoped;
-import javax.inject.Named;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
 
-@Named
-@RequestScoped
+@ManagedBean
+@SessionScoped
 public class UserBean implements Serializable {
+    private UserManager manager;
     private User user;
+    private List<User> contacts;
+    private String passwordRepeat;
+    private boolean loggedIn;
+
+    @PostConstruct
+    private void init() {
+        manager = new UserManager();
+        user = new User();
+        contacts = manager.getAll();
+    }
 
     /**
      * Gets the user of this user bean.
@@ -29,11 +43,61 @@ public class UserBean implements Serializable {
         this.user = user;
     }
 
-    public void login() {
-
+    public String getPasswordRepeat() {
+        return passwordRepeat;
     }
 
-    public void logout() {
+    public void setPasswordRepeat(String passwordRepeat) {
+        this.passwordRepeat = passwordRepeat;
+    }
 
+    public boolean isLoggedIn() {
+        return loggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
+
+    /**
+     * Gets the contacts of this user bean.
+     *
+     * @return the contacts
+     */
+    public List<User> getContacts() {
+        return contacts;
+    }
+
+    /**
+     * Sets the contacts of this user bean.
+     *
+     * @param contacts the new contacts
+     */
+    public void setContacts(List<User> contacts) {
+        this.contacts = contacts;
+    }
+
+    public String signUp() {
+        if (user.getPassword().equals(passwordRepeat)) {
+            manager.add(user);
+            loggedIn = true;
+            return "index.xhtml?faces-redirect=true";
+        }
+        return null;
+    }
+
+    public String logIn() {
+        User authenticatedUser = manager.authenticate(user.getName(), user.getPassword());
+        if (authenticatedUser != null) {
+            user = authenticatedUser;
+            loggedIn = true;
+            return "index.xhtml?faces-redirect=true";
+        }
+        return null;
+    }
+
+    public String logOut() {
+        loggedIn = false;
+        return "login.xhtml?faces-redirect=true";
     }
 }

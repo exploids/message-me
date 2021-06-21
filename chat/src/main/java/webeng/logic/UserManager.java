@@ -32,4 +32,13 @@ public class UserManager {
     public void delete(User user) {
         dao.delete(user);
     }
+
+    public User authenticate(String name, String password) {
+        User realUser = get(name);
+        if (realUser != null && realUser.getPassword().equals(password)) {
+            return realUser;
+        } else {
+            return null;
+        }
+    }
 }

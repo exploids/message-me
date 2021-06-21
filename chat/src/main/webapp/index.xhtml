@@ -11,6 +11,14 @@
     </ui:define>
     <ui:define name="content">
         <p>content lol <a href="login.xhtml">log in.</a></p>
+        <h:dataTable var="contact" value="#{userBean.contacts}">
+            <h:column>
+                <h:outputText value="#{contact.name}"/>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{contact.description}"/>
+            </h:column>
+        </h:dataTable>
     </ui:define>
 </ui:composition>
 </html>

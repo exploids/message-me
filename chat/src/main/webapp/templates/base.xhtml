@@ -11,6 +11,10 @@
         message me.
     </ui:insert>
 </h1>
+<h:form rendered="#{userBean.loggedIn}">
+    <h:outputText value="logged in as #{userBean.user.name}"/>
+    <h:commandButton action="#{userBean.logOut}" value="log out."/>
+</h:form>
 <ui:insert name="content"/>
 <p>Footer</p>
 </body>
