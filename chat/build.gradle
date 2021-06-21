@@ -17,7 +17,7 @@ dependencies {
 }
 
 gretty {
-  	contextPath = '/helloJSF'	
+  	contextPath = '/message-me'
   	fastReload = true
   	
 }
