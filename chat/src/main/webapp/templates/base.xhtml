@@ -6,13 +6,12 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <body>
-<ui:composition template="templates/base.xhtml">
-    <ui:define name="header">
-        login.
-    </ui:define>
-    <ui:define name="content">
-        <p>content lol</p>
-    </ui:define>
-</ui:composition>
+<h1>
+    <ui:insert name="header">
+        message me.
+    </ui:insert>
+</h1>
+<ui:insert name="content"/>
+<p>Footer</p>
 </body>
 </html>
