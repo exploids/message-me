@@ -3,6 +3,8 @@ package webeng.data.source;
 import webeng.data.UserDao;
 import webeng.transfer.User;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 public class JdbcUserDao extends JdbcBase implements UserDao {
@@ -23,7 +25,13 @@ public class JdbcUserDao extends JdbcBase implements UserDao {
 
     @Override
     public void update(User user) {
-
+        try (PreparedStatement statement = getConnection().prepareStatement("update user set password = ?, description = ? where name = ?")) {
+            statement.setString(1, user.getPassword());
+            statement.setString(2, user.getPassword()); // description
+            statement.setString(3, user.getName());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
