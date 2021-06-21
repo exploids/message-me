@@ -27,8 +27,9 @@ public class JdbcUserDao extends JdbcBase implements UserDao {
     public void update(User user) {
         try (PreparedStatement statement = getConnection().prepareStatement("update user set password = ?, description = ? where name = ?")) {
             statement.setString(1, user.getPassword());
-            statement.setString(2, user.getPassword()); // description
+            statement.setString(2, user.getDescription()); // description
             statement.setString(3, user.getName());
+            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -36,6 +37,11 @@ public class JdbcUserDao extends JdbcBase implements UserDao {
 
     @Override
     public void delete(User user) {
-
+        try (PreparedStatement statement = getConnection().prepareStatement("delete from user where name = ?")) {
+            statement.setString(1, user.getName());
+            statement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
