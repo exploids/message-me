@@ -25,7 +25,7 @@ public class JdbcBase {
             statement.execute("create table if not exists Message (" +
                     "sender varchar(32) not null," +
                     "receiver varchar(32) not null," +
-                    "time timestamp not null primary key," +
+                    "time timestamp not null," +
                     "text varchar(255) not null," +
                     "primary key (sender, receiver, time)," +
                     "foreign key (sender) references User (name)," +
