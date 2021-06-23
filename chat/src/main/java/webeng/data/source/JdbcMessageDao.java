@@ -74,10 +74,10 @@ public class JdbcMessageDao extends JdbcBase implements MessageDao {
     @Override
     public void update(Message message) {
         try (PreparedStatement statement = getConnection().prepareStatement("update Message set text = ? where sender = ? and receiver = ? and time = ?")) {
-            statement.setString(1, message.getSender());
-            statement.setString(2, message.getReceiver());
+            statement.setString(1, message.getText());
+            statement.setString(2, message.getSender());
+            statement.setString(4, message.getReceiver());
             statement.setTimestamp(3, message.getTime());
-            statement.setString(4, message.getText());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -86,7 +86,7 @@ public class JdbcMessageDao extends JdbcBase implements MessageDao {
 
     @Override
     public void delete(Message message) {
-        try (PreparedStatement statement = getConnection().prepareStatement("delete from Message where name = ? and receiver = ? and time = ?")) {
+        try (PreparedStatement statement = getConnection().prepareStatement("delete from Message where sender = ? and receiver = ? and time = ?")) {
             statement.setString(1, message.getSender());
             statement.setString(2, message.getReceiver());
             statement.setTimestamp(3, message.getTime());
