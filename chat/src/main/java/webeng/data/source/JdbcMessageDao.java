@@ -15,7 +15,7 @@ public class JdbcMessageDao extends JdbcBase implements MessageDao {
     @Override
     public Message get(String sender, String receiver, Timestamp time) {
         Message message = null;
-        try (PreparedStatement statement = getConnection().prepareStatement("select * from Message where = ? and ? and ?")) {
+        try (PreparedStatement statement = getConnection().prepareStatement("select * from Message where sender = ? and receiver = ? and time = ?")) {
             statement.setString(1, sender);
             statement.setString(2, receiver);
             statement.setTimestamp(3, time);
