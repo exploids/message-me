@@ -78,12 +78,9 @@ public class UserBean implements Serializable {
     }
 
     public String signUp() {
-        if (user.getPassword().equals(passwordRepeat)) {
-            manager.add(user);
-            loggedIn = true;
-            return "ok";
-        }
-        return null;
+        manager.add(user);
+        loggedIn = true;
+        return "ok";
     }
 
     public String logIn() {
