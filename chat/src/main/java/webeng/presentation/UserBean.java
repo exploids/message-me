@@ -81,7 +81,7 @@ public class UserBean implements Serializable {
         if (user.getPassword().equals(passwordRepeat)) {
             manager.add(user);
             loggedIn = true;
-            return "index.xhtml?faces-redirect=true";
+            return "ok";
         }
         return null;
     }
@@ -91,13 +91,13 @@ public class UserBean implements Serializable {
         if (authenticatedUser != null) {
             user = authenticatedUser;
             loggedIn = true;
-            return "index.xhtml?faces-redirect=true";
+            return "ok";
         }
         return null;
     }
 
     public String logOut() {
         loggedIn = false;
-        return "login.xhtml?faces-redirect=true";
+        return "ok";
     }
 }
