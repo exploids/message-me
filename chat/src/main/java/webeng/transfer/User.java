@@ -3,10 +3,9 @@ package webeng.transfer;
 import java.io.Serializable;
 
 public class User implements Serializable {
-
-    String name;
-    String password;
-    String description;
+    private String name;
+    private String password;
+    private String description;
 
     public String getName() {
         return name;
