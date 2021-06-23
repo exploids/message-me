@@ -2,18 +2,20 @@ package webeng.data.source;
 
 import webeng.data.MessageDao;
 import webeng.transfer.Message;
+import webeng.transfer.User;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JdbcMessageDao extends JdbcBase implements MessageDao {
     @Override
     public Message get(String sender, String receiver, Timestamp time) {
         Message message = null;
-        try (PreparedStatement statement = getConnection().prepareStatement("select * from Message where = ? and ? and ?`")) {
+        try (PreparedStatement statement = getConnection().prepareStatement("select * from Message where = ? and ? and ?")) {
             statement.setString(1, sender);
             statement.setString(2, receiver);
             statement.setTimestamp(3, time);
@@ -35,7 +37,24 @@ public class JdbcMessageDao extends JdbcBase implements MessageDao {
 
     @Override
     public List<Message> getAll() {
-        return null;
+        List<Message> messageliste = new ArrayList<>();
+        try (PreparedStatement statement = getConnection().prepareStatement("select * from Message")) {
+
+            try (ResultSet results = statement.executeQuery()) {
+                while (results.next()) {
+                    Message message = new Message();
+                    message.setSender(results.getString(1));
+                    message.setReceiver(results.getString(2));
+                    message.setTime(results.getTimestamp(3));
+                    message.setText(results.getString(4));
+                    messageliste.add(message);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return messageliste;
     }
 
     @Override
@@ -52,7 +71,7 @@ public class JdbcMessageDao extends JdbcBase implements MessageDao {
 
     @Override
     public void update(Message message) {
-        try (PreparedStatement statement = getConnection().prepareStatement("update Message set sender = ?, receiver = ? where sender = ?")) {
+        try (PreparedStatement statement = getConnection().prepareStatement("update Message set text = ? where sender = ? and receiver = ? and time = ?")) {
             statement.setString(1, message.getSender());
             statement.setString(2, message.getReceiver());
             statement.setTimestamp(3, message.getTime());
@@ -64,7 +83,7 @@ public class JdbcMessageDao extends JdbcBase implements MessageDao {
 
     @Override
     public void delete(Message message) {
-        try (PreparedStatement statement = getConnection().prepareStatement("delete from Message where name = ? and  receiver = ? and time = ?")) {
+        try (PreparedStatement statement = getConnection().prepareStatement("delete from Message where name = ? and receiver = ? and time = ?")) {
             statement.setString(1, message.getSender());
             statement.setString(2, message.getReceiver());
             statement.setTimestamp(3, message.getTime());
