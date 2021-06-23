@@ -26,6 +26,7 @@ public class JdbcMessageDao extends JdbcBase implements MessageDao {
                     message.setSender(results.getString(1));
                     message.setReceiver(results.getString(2));
                     message.setTime(results.getTimestamp(3));
+                    message.setText(results.getString(4));
                 }
             }
         } catch (SQLException e) {
@@ -59,10 +60,11 @@ public class JdbcMessageDao extends JdbcBase implements MessageDao {
 
     @Override
     public void add(Message message) {
-        try (PreparedStatement statement = getConnection().prepareStatement("insert into Message values (?, ?, ?)")) {
+        try (PreparedStatement statement = getConnection().prepareStatement("insert into Message values (?, ?, ?, ?)")) {
             statement.setString(1, message.getSender());
             statement.setString(2, message.getReceiver());
             statement.setTimestamp(3, message.getTime());
+            statement.setString(4, message.getText());
             statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -75,6 +77,7 @@ public class JdbcMessageDao extends JdbcBase implements MessageDao {
             statement.setString(1, message.getSender());
             statement.setString(2, message.getReceiver());
             statement.setTimestamp(3, message.getTime());
+            statement.setString(4, message.getText());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
