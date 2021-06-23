@@ -24,7 +24,7 @@
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-action>#{userBean.logOut}</from-action>
-            <from-outcome>success</from-outcome>
+            <from-outcome>ok</from-outcome>
             <to-view-id>/login.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
