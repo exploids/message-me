@@ -4,8 +4,10 @@ import webeng.logic.UserManager;
 import webeng.transfer.User;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.util.List;
 
@@ -89,8 +91,14 @@ public class UserBean implements Serializable {
             user = authenticatedUser;
             loggedIn = true;
             return "ok";
+        } else {
+            FacesMessage message = new FacesMessage(
+                    FacesMessage.SEVERITY_ERROR,
+                    "Der eingegebene Name und das Passwort passen nicht zusammen",
+                    "Der eingegebene Name und das Passwort passen nicht zusammen");
+            FacesContext.getCurrentInstance().addMessage("login", message);
+            return null;
         }
-        return null;
     }
 
     public String logOut() {
