@@ -85,6 +85,13 @@ public class UserBean implements Serializable {
         return "ok";
     }
 
+    public String reset() {
+        user.setName("");
+        user.setPassword("");
+        user.setDescription("");
+        return "reset";
+    }
+
     public String logIn() {
         User authenticatedUser = manager.authenticate(user.getName(), user.getPassword());
         if (authenticatedUser != null) {
