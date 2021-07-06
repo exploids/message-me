@@ -16,7 +16,6 @@ import java.util.List;
 public class UserBean implements Serializable {
     private UserManager manager;
     private User user;
-    private List<User> contacts;
     private String passwordRepeat;
     private boolean loggedIn;
 
@@ -24,7 +23,6 @@ public class UserBean implements Serializable {
     private void init() {
         manager = new UserManager();
         user = new User();
-        contacts = manager.getAll();
     }
 
     /**
@@ -66,18 +64,7 @@ public class UserBean implements Serializable {
      *
      * @return the contacts
      */
-    public List<User> getContacts() {
-        return contacts;
-    }
 
-    /**
-     * Sets the contacts of this user bean.
-     *
-     * @param contacts the new contacts
-     */
-    public void setContacts(List<User> contacts) {
-        this.contacts = contacts;
-    }
 
     public String signUp() {
         manager.add(user);
@@ -112,4 +99,9 @@ public class UserBean implements Serializable {
         loggedIn = false;
         return "ok";
     }
+
+    public void update() {
+        manager.update(user);
+    }
+
 }

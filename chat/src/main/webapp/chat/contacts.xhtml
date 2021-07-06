@@ -10,14 +10,22 @@
         contacts.
     </ui:define>
     <ui:define name="content">
-        <h:dataTable var="contact" value="#{userBean.contacts}">
+        <h:form>
+            <h:inputText id="search" value="#{searchBean.query}">
+                <f:ajax render="search-results" event="keyup" listener="#{searchBean.search}" execute="@form"/>
+            </h:inputText>
+        </h:form>
+        <h:dataTable id="search-results" var="contact" value="#{searchBean.contacts}">
             <h:column>
                 <h:outputText value="#{contact.name}"/>
             </h:column>
             <h:column>
-                <h:outputText value="#{contact.description}"/>
+                <h:link value="profile." outcome="profile" includeViewParams="true">
+                    <f:param value="#{contact.name}" name="name"/>
+                </h:link>
             </h:column>
         </h:dataTable>
+        <h:link value="configure." outcome="settings"/>
     </ui:define>
 </ui:composition>
 </html>

@@ -5,16 +5,16 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:metadata>
+    <f:viewParam name="name" value="#{detailBean.name}"/>
+    <f:viewAction action="#{detailBean.loadUser}"/>
+</f:metadata>
 <ui:composition template="../templates/base.xhtml">
-    <h1>
-        <ui:define name="header">
-            Profile.
-        </ui:define>
-    </h1>
+    <ui:define name="header">
+        <h:outputText value="#{detailBean.user.name}."/>
+    </ui:define>
     <ui:define name="content">
-            <h1>
-
-            </h1>
+        <h:outputText value="#{detailBean.user.description}"/>
     </ui:define>
 </ui:composition>
 </html>

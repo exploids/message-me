@@ -1,17 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
-
-<h:head>
-    <title>Title</title>
-</h:head>
-
-<h:body>
-
-</h:body>
-
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<ui:composition template="../templates/base.xhtml">
+    <ui:define name="header">
+        configure.
+    </ui:define>
+    <ui:define name="content">
+        <h:form id="login">
+            <h:panelGrid columns="3">
+                <h:outputLabel for="password" value="new password."/>
+                <h:inputSecret id="password" value="#{userBean.user.password}" required="true">
+                    <f:validateLength minimum="1" maximum="128"/>
+                    <f:ajax render="password-messages password-repeat-messages" execute="@this" event="valueChange"/>
+                </h:inputSecret>
+                <h:messages for="password" id="password-messages"/>
+                <h:outputLabel for="password-repeat" value="new password."/>
+                <h:inputSecret id="password-repeat" required="true">
+                    <f:validator validatorId="passwordConfirmationValidator"/>
+                    <f:ajax render="password-repeat-messages" execute="@this" event="valueChange"/>
+                </h:inputSecret>
+                <h:messages for="password-repeat" id="password-repeat-messages"/>
+                <h:commandButton id="submit-password" action="#{userBean.update}" value="change."/>
+            </h:panelGrid>
+        </h:form>
+        <h:form id="description-change">
+            <h:panelGrid columns="3">
+                <h:outputLabel for="description" value="new description."/>
+                <h:inputTextarea id="description" value="#{userBean.user.description}" required="true">
+                    <f:validateLength minimum="1" maximum="255"/>
+                    <f:ajax render="description-messages" execute="@this" event="valueChange"/>
+                </h:inputTextarea>
+                <h:messages for="description" id="description-messages"/>
+                <h:commandButton id="submit-description" action="#{userBean.update}" value="change."/>
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>
 </html>
