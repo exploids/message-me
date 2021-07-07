@@ -14,7 +14,11 @@
         <h:outputText value="#{detailBean.user.name}."/>
     </ui:define>
     <ui:define name="content">
+        <h:link value="contacts." outcome="contacts"/>
         <h:outputText value="#{detailBean.user.description}"/>
+        <h:link value="chat." outcome="chat" includeViewParams="true">
+            <f:param value="#{detailBean.user.name}" name="name"/>
+        </h:link>
     </ui:define>
 </ui:composition>
 </html>

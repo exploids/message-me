@@ -24,6 +24,11 @@
                     <f:param value="#{contact.name}" name="name"/>
                 </h:link>
             </h:column>
+            <h:column>
+                <h:link value="chat." outcome="chat" includeViewParams="true">
+                    <f:param value="#{contact.name}" name="name"/>
+                </h:link>
+            </h:column>
         </h:dataTable>
         <h:link value="configure." outcome="settings"/>
     </ui:define>

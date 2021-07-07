@@ -9,7 +9,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
-import javax.inject.Inject;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -20,6 +19,7 @@ import java.util.stream.Collectors;
 @RequestScoped
 public class DetailBean implements Serializable {
 
+    @ManagedProperty("#{param.name}")
     private String name;
     private User user;
     private List<Message> messages;
@@ -32,6 +32,7 @@ public class DetailBean implements Serializable {
     @PostConstruct
     private void init() {
         messageManager = new MessageManager();
+        messages = messageManager.getAll().stream().filter(this::messageConcerns).collect(Collectors.toList());
     }
 
     public String getName() {
@@ -66,13 +67,17 @@ public class DetailBean implements Serializable {
         this.message = message;
     }
 
+    public UserBean getUserBean() {
+        return userBean;
+    }
+
+    public void setUserBean(UserBean userBean) {
+        this.userBean = userBean;
+    }
+
     public void loadUser() {
         UserManager userManager = new UserManager();
         user = userManager.get(name);
-    }
-
-    public void loadMessages() {
-        messages = messageManager.getAll().stream().filter(this::messageConcerns).collect(Collectors.toList());
     }
 
     private boolean messageConcerns(Message message) {
@@ -87,6 +92,8 @@ public class DetailBean implements Serializable {
         bean.setText(message);
         bean.setTime(Timestamp.from(Instant.now()));
         messageManager.add(bean);
+        message = null;
+        messages = messageManager.getAll().stream().filter(this::messageConcerns).collect(Collectors.toList());
     }
 
 }

@@ -5,33 +5,35 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:metadata>
-    <f:viewParam name="name" value="#{detailBean.name}"/>
-    <f:viewAction action="#{detailBean.loadMessages}"/>
-</f:metadata>
 <ui:composition template="../templates/base.xhtml">
     <ui:define name="header">
-        contacts.
+        talk.
     </ui:define>
     <ui:define name="content">
         <h:link value="#{detailBean.name}" outcome="profile" includeViewParams="true">
             <f:param value="#{detailBean.name}" name="name"/>
         </h:link>
-        <h:form>
-            <h:inputText id="send" value="#{detailBean.message}"/>
-            <h:commandButton id="submit" action="#{detailBean.send}" value="send."/>
-        </h:form>
-        <h:dataTable id="message-history" var="message" value="#{detailBean.messages}">
-            <h:column>
-                <h:outputText value="#{message.sender}"/>
-            </h:column>
-            <h:column>
-                <h:outputText value="#{message.text}"/>
-            </h:column>
-            <h:column>
-                <h:outputText value="#{message.time}"/>
-            </h:column>
-        </h:dataTable>
+        <h:link value="contacts." outcome="contacts"/>
+        <h:panelGroup id="chat">
+            <h:form>
+                <h:inputHidden id="name" value="#{detailBean.name}"/>
+                <h:inputText id="send" value="#{detailBean.message}"/>
+                <h:commandButton id="submit" action="#{detailBean.send}" value="send.">
+                    <f:ajax execute="@form" render="chat"/>
+                </h:commandButton>
+            </h:form>
+            <h:dataTable id="message-history" var="message" value="#{detailBean.messages}">
+                <h:column>
+                    <h:outputText value="#{message.sender}"/>
+                </h:column>
+                <h:column>
+                    <h:outputText value="#{message.text}"/>
+                </h:column>
+                <h:column>
+                    <h:outputText value="#{message.time}"/>
+                </h:column>
+            </h:dataTable>
+        </h:panelGroup>
     </ui:define>
 </ui:composition>
 </html>

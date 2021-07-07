@@ -5,7 +5,6 @@
 	id="helloJSF" version="3.1">
 	<display-name>"helloJSF"</display-name>
 
-
 	<listener>
     	<listener-class>com.sun.faces.config.ConfigureListener</listener-class>
 	</listener>
@@ -14,7 +13,7 @@
 	</listener>
 
 	<welcome-file-list>
-
+		<welcome-file>login.xhtml</welcome-file>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
@@ -22,7 +21,6 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-
 
 	<!-- Time in seconds that facelets should be checked for changes since last 
 		request. A value of -1 disables refresh checking. -->
@@ -39,6 +37,4 @@
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
 	</context-param>
-
-
 </web-app>

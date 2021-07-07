@@ -33,6 +33,16 @@
             <to-view-id>/chat/profile.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>chat</from-outcome>
+            <to-view-id>/chat/chat.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>contacts</from-outcome>
+            <to-view-id>/chat/contacts.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <display-name>contacts.xhtml</display-name>
