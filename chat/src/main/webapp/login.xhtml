@@ -8,19 +8,19 @@
 <ui:composition template="templates/base.xhtml">
     <ui:param name="page" value="login"/>
     <ui:define name="header">
-        <h:outputText value="login." styleClass="login"/>
+        <h:outputText value="login." styleClass="titel"/>
     </ui:define>
     <ui:define name="content">
         <h:form id="login" styleClass="form_login">
             <!--<h:panelGrid columns="1" styleClass="grid">-->
                 <h:inputText id="name" value="#{userBean.user.name}" required="true" styleClass="inputField"/>
                 <h:outputLabel for="name" value="username."/>
-                <h:messages for="name"/>
+                <h:messages for="name" styleClass="info"/>
                 <h:inputSecret id="password" value="#{userBean.user.password}" required="true" styleClass="inputField"/>
                 <h:outputLabel for="password" value="password."/>
-                <h:messages for="password"/>
+                <h:messages for="password" styleClass="info"/>
             <!--</h:panelGrid>-->
-            <h:commandButton action="#{userBean.logIn}" value="sign in." styleClass="button"/>
+            <h:commandButton action="#{userBean.logIn}" value="sign in." styleClass="button align_r"/>
         </h:form>
         <a href="signup.xhtml">sign up.</a>
     </ui:define>

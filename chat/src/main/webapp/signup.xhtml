@@ -8,38 +8,43 @@
 <ui:composition template="templates/base.xhtml">
     <ui:param name="page" value="signup"/>
     <ui:define name="header">
-        sign up.
+        <h:outputText value="sign up." styleClass="titel"/>
     </ui:define>
     <ui:define name="content">
-        <h:form id="login">
-            <h:panelGrid columns="3">
-                <h:outputLabel for="name" value="username."/>
-                <h:inputText id="name" value="#{userBean.user.name}" required="true">
+        <h:form id="login" styleClass="form_signup">
+            <!--<h:panelGrid columns="3">-->
+
+                <h:inputText id="name" value="#{userBean.user.name}" required="true" styleClass="inputField">
                     <f:validator validatorId="nameValidator"/>
                     <f:ajax render="name-messages" execute="@this" event="valueChange"/>
                 </h:inputText>
-                <h:messages for="name" id="name-messages"/>
-                <h:outputLabel for="password" value="password."/>
-                <h:inputSecret id="password" value="#{userBean.user.password}" required="true">
+                <h:messages for="name" id="name-messages" styleClass="info"/>
+                <h:outputLabel for="name" value="username."/>
+
+                <h:inputSecret id="password" value="#{userBean.user.password}" required="true" styleClass="inputField" >
                     <f:validateLength minimum="1" maximum="128"/>
                     <f:ajax render="password-messages password-repeat-messages" execute="@this" event="valueChange"/>
                 </h:inputSecret>
-                <h:messages for="password" id="password-messages"/>
-                <h:outputLabel for="password-repeat" value="password."/>
-                <h:inputSecret id="password-repeat" required="true">
+                <h:messages for="password" id="password-messages" styleClass="info"/>
+                <h:outputLabel for="password" value="password."/>
+
+                <h:inputSecret id="password-repeat" required="true" styleClass="inputField">
                     <f:validator validatorId="passwordConfirmationValidator"/>
                     <f:ajax render="password-repeat-messages" execute="@this" event="valueChange"/>
                 </h:inputSecret>
-                <h:messages for="password-repeat" id="password-repeat-messages"/>
-                <h:outputLabel for="description" value="describe yourself."/>
-                <h:inputTextarea id="description" value="#{userBean.user.description}" required="true">
+                <h:messages for="password-repeat" id="password-repeat-messages" styleClass="info"/>
+                <h:outputLabel for="password-repeat" value="password."/>
+
+                <h:inputTextarea id="description" value="#{userBean.user.description}" required="true" styleClass="inputField">
                     <f:validateLength minimum="1" maximum="255"/>
                     <f:ajax render="description-messages" execute="@this" event="valueChange"/>
                 </h:inputTextarea>
-                <h:messages for="description" id="description-messages"/>
-                <h:commandButton id="submit" action="#{userBean.signUp}" value="create."/>
-                <h:commandButton id="reset" action="#{userBean.reset}" value="reset." immediate="true"/>
-            </h:panelGrid>
+                <h:messages for="description" id="description-messages" styleClass="info"/>
+                <h:outputLabel for="description" value="describe yourself."/>
+
+                <h:commandButton id="submit" action="#{userBean.signUp}" value="create." styleClass="button align_r"/>
+                <h:commandButton id="reset" action="#{userBean.reset}" value="reset." immediate="true" styleClass="button align_r"/>
+            <!--</h:panelGrid>-->
         </h:form>
         <a href="login.xhtml">log in.</a>
     </ui:define>
