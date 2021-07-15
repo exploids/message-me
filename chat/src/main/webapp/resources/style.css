@@ -1,0 +1,103 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    font-size: 1.5vw;
+    /*padding-top: 3rem;
+    padding-left: 5rem;*/
+    font-family: 'DM Serif Display', serif;
+}
+
+.footerText {
+    position: fixed;
+    bottom: 0;
+    font-size: 0.8vw;
+}
+
+.inputField {
+    background-color: transparent;
+    border: 1px solid black;
+    width: 100%;
+    height: 3vw;
+}
+
+.login {
+    font-size: 3rem;
+    margin-top: 2rem;
+}
+
+input.button {
+    background-color: transparent;
+    border: none;
+    /*font-size: 2vw;*/
+    height: 2vw;
+    margin-left: 27.3vw;
+    margin-top: 0vw !important;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    margin-left: 44vw;
+    font-size: 0.8rem;
+}
+
+.background-login {
+    background-image: url("#{resource['login.svg']}");
+    background-repeat: no-repeat;
+    /*background-size: cover;*/
+    /*background-position: center;*/
+    background-size: 100% auto;
+}
+
+.form_login {
+    margin-left: 13vw;
+    margin-top: 10vw;
+    width: 30vw;
+}
+
+.form_login input {
+    display: block;
+    margin-top: 2vw;
+}
+
+.background-contacts {
+    background-image: url("#{resource['contacts.svg']}");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+.background-chat {
+    background-image: url("#{resource['chat.svg']}");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+.background-profile {
+    background-image: url("#{resource['profile.svg']}");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+.background-settings {
+    background-image: url("#{resource['settings.svg']}");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+.background-signup {
+    background-image: url("#{resource['signup.svg']}");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+
+/*
+Schriften etc. mit em skalieren
+ */
+
+/*
+Links (z.B. aus find. und profile) ne CSS Klasse geben --> Link ne feste Größe width geben und die Sprechblase z.B. als
+Hintergrundbild setzen
+ */
