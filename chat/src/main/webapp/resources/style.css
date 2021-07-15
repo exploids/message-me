@@ -4,6 +4,35 @@ html, body {
     height: 100%;
 }
 
+/*****************************************************************************************
+******************************** LOGGED IN AS ** LOG OUT *********************************
+ *****************************************************************************************/
+
+.loggedin_info {
+    position: fixed;
+    top: 0;
+    display: flex;
+    margin-top: 2vw;
+    margin-left: -7vw;
+    font-size: 1rem;
+}
+.loggedin_info input.button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.2rem;
+    height: 2vw;
+    /*margin-left: 27.3vw;*/
+    font-family: 'DM Serif Display', serif;
+    cursor: pointer;
+    padding: 0;
+    margin:0 !important;
+    float: right;
+}
+
+/*****************************************************************************************
+************************************ ALLGEMEINES *****************************************
+ *****************************************************************************************/
+
 body {
     font-size: 1.5vw;
     /*padding-top: 3rem;
@@ -15,6 +44,7 @@ body {
     position: fixed;
     bottom: 0;
     font-size: 0.8vw;
+    margin-left: -7vw;
 }
 
 .inputField {
@@ -27,6 +57,10 @@ body {
     font-size: 1rem;
 }
 
+label{
+    font-size: 1rem;
+}
+
 .titel {
     font-size: 5rem;
 }
@@ -36,8 +70,8 @@ input.button {
     border: none;
     font-size: 1.2rem;
     height: 2vw;
-    /*margin-left: 27.3vw;*/
-    margin-top: 1vw;
+    margin-top: 2vw;
+    margin-right: -1.5vw;
     font-family: 'DM Serif Display', serif;
     cursor: pointer;
     padding: 0;
@@ -50,7 +84,6 @@ input.button {
 a {
     color: black;
     text-decoration: none;
-    margin-left: 43vw;
     font-size: 0.8rem;
     font-family: 'DM Serif Display', serif;
 }
@@ -63,6 +96,10 @@ a {
 ul.info{
     margin:0;
 }
+
+/*****************************************************************************************
+*************************************** LOGIN ********************************************
+ *****************************************************************************************/
 
 .background-login {
     background-image: url("#{resource['login.svg']}");
@@ -79,33 +116,121 @@ ul.info{
     width: 32vw;
 }
 
+.sign_up_button {
+    margin-left: 43vw;
+}
+
 form input {
     display: block;
 }
+
+/*****************************************************************************************
+************************************* CONTACTS *******************************************
+ *****************************************************************************************/
 
 .background-contacts {
     background-image: url("#{resource['contacts.svg']}");
     background-repeat: no-repeat;
     background-size: 100% auto;
+    margin-top: 9vw;
+    margin-left: 9vw;
 }
+
+.contacts_content {
+    margin-top: 2vw;
+    margin-left: 19vw;
+    width: 41vw;
+    height: 30vw;
+}
+
+/*****************************************************************************************
+*************************************** CHAT *********************************************
+ *****************************************************************************************/
 
 .background-chat {
     background-image: url("#{resource['chat.svg']}");
     background-repeat: no-repeat;
     background-size: 100% auto;
+    margin-top: 6vw;
+    margin-left: 9vw;
 }
+
+.chat_head{
+    display: flex;
+}
+
+.chatpartner{
+    color: saddlebrown;
+    font-size: 3rem;
+}
+
+.form_send_message{
+    display: flex;
+}
+
+
+/*****************************************************************************************
+************************************* PROFILE ********************************************
+ *****************************************************************************************/
 
 .background-profile {
     background-image: url("#{resource['profile.svg']}");
     background-repeat: no-repeat;
     background-size: 100% auto;
+    margin-top: 9vw;
+    margin-left: 9vw;
 }
+
+.description{
+    margin-top: 2vw;
+    margin-left: 19vw;
+    width: 41vw;
+    height: 20vw;
+}
+
+.profile_buttons{
+    margin-left: 45vw;
+}
+
+.profile_buttons a{
+    padding: 2vw;
+}
+
+/*****************************************************************************************
+**************************** CONFIGURE / SETTINGS ****************************************
+*****************************************************************************************/
 
 .background-settings {
     background-image: url("#{resource['settings.svg']}");
     background-repeat: no-repeat;
     background-size: 100% auto;
+    margin-top: 6vw;
+    margin-left: 9vw;
 }
+
+.configure_content {
+    display: flex;
+    margin-left: 10vw;
+}
+
+.configure_newpassword {
+    margin-top: 4vw;
+    width:25vw;
+}
+
+.configure_newdescription {
+    width:25vw;
+    margin-top: 10vw;
+    margin-left: 19vw;
+}
+
+.configure_newdescription textarea {
+    height: 6vw;
+}
+
+/*****************************************************************************************
+************************************* SIGN UP ********************************************
+ *****************************************************************************************/
 
 .background-signup {
     background-image: url("#{resource['signup.svg']}");
@@ -119,10 +244,6 @@ form input {
     margin-left: 15vw;
     width: 32vw;
 }
-
-/*
-Schriften etc. mit em skalieren
- */
 
 /*
 Links (z.B. aus find. und profile) ne CSS Klasse geben --> Link ne feste Größe width geben und die Sprechblase z.B. als

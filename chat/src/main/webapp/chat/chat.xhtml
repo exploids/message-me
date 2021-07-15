@@ -8,21 +8,27 @@
 <ui:composition template="../templates/base.xhtml">
     <ui:param name="page" value="chat"/>
     <ui:define name="header">
-        talk.
-    </ui:define>
-    <ui:define name="content">
-        <h:link value="#{detailBean.name}" outcome="profile" includeViewParams="true">
-            <f:param value="#{detailBean.name}" name="name"/>
-        </h:link>
+        <h:outputText value="talk." styleClass="titel"/>
+
         <h:link value="contacts." outcome="contacts"/>
-        <h:panelGroup id="chat">
-            <h:form>
+    </ui:define>
+
+    <ui:define name="content">
+
+        <div class="chat_head">
+
+            <h:link value="#{detailBean.name}" outcome="profile" includeViewParams="true" styleClass="chatpartner">
+                <f:param value="#{detailBean.name}" name="name"/>
+            </h:link>
+
+            <h:form class="form_send_message">
                 <h:inputHidden id="name" value="#{detailBean.name}"/>
-                <h:inputText id="send" value="#{detailBean.message}"/>
-                <h:commandButton id="submit" action="#{detailBean.send}" value="send.">
+                <h:inputText id="send" value="#{detailBean.message}" styleClass="inputField"/>
+                <h:commandButton id="submit" action="#{detailBean.send}" value="send." styleClass="button">
                     <f:ajax execute="@form" render="chat"/>
                 </h:commandButton>
             </h:form>
+        </div>
             <h:dataTable id="message-history" var="message" value="#{detailBean.messages}">
                 <h:column>
                     <h:outputText value="#{message.sender}"/>
@@ -34,7 +40,7 @@
                     <h:outputText value="#{message.time}"/>
                 </h:column>
             </h:dataTable>
-        </h:panelGroup>
+        <!--</h:panelGroup>-->
     </ui:define>
 </ui:composition>
 </html>

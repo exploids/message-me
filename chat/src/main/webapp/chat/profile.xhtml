@@ -8,14 +8,18 @@
 <ui:composition template="../templates/base.xhtml">
     <ui:param name="page" value="profile"/>
     <ui:define name="header">
-        <h:outputText value="#{detailBean.user.name}."/>
+        <h:outputText value="#{detailBean.user.name}." styleClass="titel"/>
+        <h:link value="contacts." outcome="contacts"/>
     </ui:define>
     <ui:define name="content">
-        <h:link value="contacts." outcome="contacts"/>
-        <h:outputText value="#{detailBean.user.description}"/>
-        <h:link value="chat." outcome="chat" includeViewParams="true">
-            <f:param value="#{detailBean.user.name}" name="name"/>
-        </h:link>
+        <div class="description">
+            <h:outputText value="#{detailBean.user.description}"/>
+        </div>
+        <div class="profile_buttons">
+            <h:link value="chat." outcome="chat" includeViewParams="true">
+                <f:param value="#{detailBean.user.name}" name="name"/>
+            </h:link>
+        </div>
     </ui:define>
 </ui:composition>
 </html>
