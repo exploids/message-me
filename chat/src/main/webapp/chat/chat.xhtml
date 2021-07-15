@@ -9,17 +9,20 @@
     <ui:param name="page" value="chat"/>
     <ui:define name="header">
         <h:outputText value="talk." styleClass="titel"/>
-
         <h:link value="contacts." outcome="contacts"/>
-    </ui:define>
 
+        <h:link value="#{detailBean.name}" outcome="profile" includeViewParams="true" styleClass="chatpartner">
+            <f:param value="#{detailBean.name}" name="name"/>
+        </h:link>
+
+    </ui:define>
     <ui:define name="content">
 
-        <div class="chat_head">
+        <!--<h:link value="#{detailBean.name}" outcome="profile" includeViewParams="true" styleClass="chatpartner">
+            <f:param value="#{detailBean.name}" name="name"/>
+        </h:link>-->
 
-            <h:link value="#{detailBean.name}" outcome="profile" includeViewParams="true" styleClass="chatpartner">
-                <f:param value="#{detailBean.name}" name="name"/>
-            </h:link>
+        <h:panelGroup id="chat">
 
             <h:form class="form_send_message">
                 <h:inputHidden id="name" value="#{detailBean.name}"/>
@@ -28,19 +31,22 @@
                     <f:ajax execute="@form" render="chat"/>
                 </h:commandButton>
             </h:form>
-        </div>
+
             <h:dataTable id="message-history" var="message" value="#{detailBean.messages}">
                 <h:column>
+                    <!-- eig lassen wir den weg oder?? -->
                     <h:outputText value="#{message.sender}"/>
                 </h:column>
                 <h:column>
-                    <h:outputText value="#{message.text}"/>
-                </h:column>
-                <h:column>
-                    <h:outputText value="#{message.time}"/>
+                    <div class="message">
+                        <h:outputText value="#{message.text}" styleClass="message_text"/> <!---->
+                        <!--</h:column>
+                        <h:column>-->
+                        <h:outputText value="#{message.time}" styleClass="message_time"/> <!---->
+                    </div>
                 </h:column>
             </h:dataTable>
-        <!--</h:panelGroup>-->
+        </h:panelGroup>
     </ui:define>
 </ui:composition>
 </html>

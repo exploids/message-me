@@ -16,8 +16,8 @@
         </ui:insert>
     </h1>
     <h:form rendered="#{userBean.loggedIn}" styleClass="loggedin_info">
-        <h:outputText value="logged in as #{userBean.user.name}"/>
-        <h:commandButton action="#{userBean.logOut}" value="log out." styleClass="button align_r" />
+        <h:outputText value="logged in as #{userBean.user.name}" style="font-size: 0.8rem"/>
+        <h:commandButton action="#{userBean.logOut}" value="log out." styleClass="button logout" />
     </h:form>
     <ui:insert name="content"/>
     <p class="footerText">Eine Nachrichten-App von: Clara Krödel, Luca Selinski und Johannes Vieler</p>

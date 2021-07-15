@@ -13,20 +13,20 @@ html, body {
     top: 0;
     display: flex;
     margin-top: 2vw;
-    margin-left: -7vw;
+    margin-left: -10vw;
     font-size: 1rem;
+    width: 100vw;
 }
 .loggedin_info input.button {
     background-color: transparent;
     border: none;
     font-size: 1.2rem;
     height: 2vw;
-    /*margin-left: 27.3vw;*/
+    margin-left: 79vw;
+    margin-top: 0 !important;
     font-family: 'DM Serif Display', serif;
     cursor: pointer;
     padding: 0;
-    margin:0 !important;
-    float: right;
 }
 
 /*****************************************************************************************
@@ -43,8 +43,10 @@ body {
 .footerText {
     position: fixed;
     bottom: 0;
-    font-size: 0.8vw;
-    margin-left: -7vw;
+    font-size: 0.8rem;
+    margin-left: -10vw;
+    background-color: white;
+    padding: 0.3vw;
 }
 
 .inputField {
@@ -133,7 +135,7 @@ form input {
     background-repeat: no-repeat;
     background-size: 100% auto;
     margin-top: 9vw;
-    margin-left: 9vw;
+    margin-left: 11vw;
 }
 
 .contacts_content {
@@ -152,20 +154,51 @@ form input {
     background-repeat: no-repeat;
     background-size: 100% auto;
     margin-top: 6vw;
-    margin-left: 9vw;
+    margin-left: 11vw;
 }
 
-.chat_head{
+/*.chat_head{
     display: flex;
-}
+    margin-left: 22vw;
+    margin-top: -8vw;
+}*/
 
 .chatpartner{
     color: saddlebrown;
     font-size: 3rem;
+    margin-left: 3vw;
 }
 
 .form_send_message{
     display: flex;
+    margin-left: 50vw;
+    margin-right: 3vw;
+    width: 30vw;
+    margin-top: -8vw;
+}
+
+#message-history {
+    margin-top: 5vw;
+}
+
+#message-history tr{
+    height:3.5vw;
+}
+
+.message {
+    border: 1px solid black;
+    padding: 0.5vw;
+    margin: 1vw;
+    width: 30vw;
+}
+
+.message_text {
+    font-size: 1rem;
+}
+
+.message_time{
+    font-size: 0.5rem;
+    float: right;
 }
 
 
