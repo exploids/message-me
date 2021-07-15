@@ -8,18 +8,18 @@
     <title>message me.</title>
 </h:head>
 <h:body styleClass="background-#{page}">
-<h:outputStylesheet name="style.css"/>
-<h:outputScript library="javax.faces" name="jsf.js" target="head"/>
-<h1>
-    <ui:insert name="header">
-        message me.
-    </ui:insert>
-</h1>
-<h:form rendered="#{userBean.loggedIn}">
-    <h:outputText value="logged in as #{userBean.user.name}"/>
-    <h:commandButton action="#{userBean.logOut}" value="log out." styleClass="button-color"/>
-</h:form>
-<ui:insert name="content"/>
-<p>Eine Nachrichten-App von: Clara Krödel, Luca Selinski und Johannes Vieler</p>
+    <h:outputStylesheet name="style.css"/>
+    <h:outputScript library="javax.faces" name="jsf.js" target="head"/>
+    <h1>
+        <ui:insert name="header">
+            message me.
+        </ui:insert>
+    </h1>
+    <h:form rendered="#{userBean.loggedIn}">
+        <h:outputText value="logged in as #{userBean.user.name}"/>
+        <h:commandButton action="#{userBean.logOut}" value="log out."/>
+    </h:form>
+    <ui:insert name="content"/>
+    <p class="footerText">Eine Nachrichten-App von: Clara Krödel, Luca Selinski und Johannes Vieler</p>
 </h:body>
 </html>
