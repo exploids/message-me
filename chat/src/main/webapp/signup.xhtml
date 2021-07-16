@@ -9,6 +9,7 @@
     <ui:param name="page" value="signup"/>
     <ui:define name="header">
         <h:outputText value="sign up." styleClass="titel"/>
+        <a href="login.xhtml">log in.</a>
     </ui:define>
     <ui:define name="content">
         <h:form id="login" styleClass="form_signup">
@@ -46,7 +47,6 @@
                 <h:commandButton id="reset" action="#{userBean.reset}" value="reset." immediate="true" styleClass="button align_r"/>
             <!--</h:panelGrid>-->
         </h:form>
-        <a href="login.xhtml">log in.</a>
     </ui:define>
 </ui:composition>
 </html>

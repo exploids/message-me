@@ -11,16 +11,16 @@
         <h:outputText value="talk." styleClass="titel"/>
         <h:link value="contacts." outcome="contacts"/>
 
-        <h:link value="#{detailBean.name}" outcome="profile" includeViewParams="true" styleClass="chatpartner">
+        <!--<h:link value="#{detailBean.name}" outcome="profile" includeViewParams="true" styleClass="chatpartner">
             <f:param value="#{detailBean.name}" name="name"/>
-        </h:link>
+        </h:link>-->
 
     </ui:define>
     <ui:define name="content">
 
-        <!--<h:link value="#{detailBean.name}" outcome="profile" includeViewParams="true" styleClass="chatpartner">
+        <h:link value="#{detailBean.name}" outcome="profile" includeViewParams="true" styleClass="chatpartner">
             <f:param value="#{detailBean.name}" name="name"/>
-        </h:link>-->
+        </h:link>
 
         <h:panelGroup id="chat">
 
@@ -32,20 +32,24 @@
                 </h:commandButton>
             </h:form>
 
-            <h:dataTable id="message-history" var="message" value="#{detailBean.messages}">
-                <h:column>
-                    <!-- eig lassen wir den weg oder?? -->
-                    <h:outputText value="#{message.sender}"/>
-                </h:column>
-                <h:column>
-                    <div class="message">
-                        <h:outputText value="#{message.text}" styleClass="message_text"/> <!---->
-                        <!--</h:column>
-                        <h:column>-->
-                        <h:outputText value="#{message.time}" styleClass="message_time"/> <!---->
-                    </div>
-                </h:column>
-            </h:dataTable>
+            <div class="chat_div">
+                <h:dataTable id="message-history" var="message" value="#{detailBean.messages}" >
+                    <h:column>
+                        <!-- eig lassen wir den weg oder?? -->
+                        <h:outputText value="#{message.sender}"/>
+                    </h:column>
+                    <h:column>
+                        <div class="message">
+                            <h:outputText value="#{message.text}" styleClass="message_text"/> <!---->
+                            <!--</h:column>
+                            <h:column>-->
+                            <h:outputText value="#{message.time}" styleClass="message_time">
+                                <f:convertDateTime pattern="d-M-yyyy HH:mm"/>
+                            </h:outputText>
+                        </div>
+                    </h:column>
+                </h:dataTable>
+            </div>
         </h:panelGroup>
     </ui:define>
 </ui:composition>

@@ -6,11 +6,13 @@ import webeng.transfer.Message;
 
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class MessageManager {
-    private MessageDao dao;
+    private final MessageDao dao;
 
     public MessageManager() {
         dao = DaoFactory.getMessageDao();
@@ -37,7 +39,7 @@ public class MessageManager {
         bean.setSender(sender);
         bean.setReceiver(receiver);
         bean.setText(text);
-        bean.setTime(Timestamp.from(Instant.now()));
+        bean.setTime(Timestamp.from(Instant.now().atZone(ZoneId.of("Europe/Berlin")).toLocalDateTime().toInstant(ZoneOffset.UTC)));
         add(bean);
         return getFor(sender, receiver);
     }
